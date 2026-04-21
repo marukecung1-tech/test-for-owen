@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { MapPin, User, Facebook, Mail, Music2, Video, MonitorPlay, Star, ArrowRight, Quote, ChefHat, ArrowLeft, PlayCircle, Clock, Edit2, X, Save, Settings } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
-// กำหนด URL ของรูปภาพโลโก้ที่นี่
-const LOGO_URL = "https://cdn.discordapp.com/attachments/830477489871519824/1491058092652368052/image_2026-03-14_105139410.png?ex=69d64f8f&is=69d4fe0f&hm=780907d0fdec26554f6982e85521194de9116cd95a1e1ac54b79b669e3dc71fa&";
+// 💡 คำแนะนำสำหรับการเปลี่ยนโลโก้:
+// 1. นำไฟล์รูปโลโก้ของคุณไปใส่ไว้ในโฟลเดอร์ public/image/
+// 2. เปลี่ยนชื่อไฟล์ในบรรทัดด้านล่างให้ตรงกับชื่อไฟล์ของคุณ (เช่น "/image/LOGO.png")
+const LOGO_URL = "image/LOGO.png"; // <-- ใส่ path รูปตรงนี้
 const NAV_LOGO_URL = LOGO_URL;
 
 // Component สำหรับโหลดรูปภาพ ถ้าไม่มีรูปในโฟลเดอร์ให้ใช้รูปสำรอง (Fallback)
@@ -33,8 +35,8 @@ const ImageWithFallback = ({ src, fallbackSrc, alt, className, ...props }: any) 
 // 3. และตั้งชื่อไฟล์ให้ตรงกับเลขร้าน เช่น ร้านแรกตั้งชื่อว่า "1.png", ร้านที่สอง "2.png" ไปเรื่อยๆ จนถึง "10.png"
 // 4. หลังจากเปลี่ยนไฟล์รูปภาพในโฟลเดอร์แล้ว ภาพในนี้จะเปลี่ยนตามอัตโนมัติครับ
 const INITIAL_RESTAURANTS = [
-  { id: 1, title: "ร้าน Bad bad burger (ร้านสเต็ก,เบอร์เกอร์)", img: "/image/1.png", fallbackImg: "https://picsum.photos/seed/burger1/600/800", rating: "4.8", price: "฿฿", desc: "ร้านเบอร์เกอร์และสเต็กเนื้อฉ่ำๆ บรรยากาศเป็นกันเอง รสชาติจัดเต็มอร่อยคุ้มราคา", tags: ["เบอร์เกอร์", "สเต็ก"], time: "11:00 - 22:00 น.", videoUrl: "" },
-  { id: 2, title: "ร้าน ครัวสุโขทัย (ก๊วยเตี๋ยว+ตามสั่ง)", img: "/image/2.png", fallbackImg: "https://picsum.photos/seed/noodle2/600/800", rating: "4.5", price: "฿", desc: "ร้านเด็ดหน้าม. มีทั้งก๋วยเตี๋ยวต้มยำสุโขทัยรสแซ่บ และอาหารตามสั่งให้เลือกหลากหลาย", tags: ["ก๋วยเตี๋ยว", "ตามสั่ง"], time: "09:00 - 20:00 น.", videoUrl: "" },
+  { id: 1, title: "ร้าน Bad bad burger (ร้านสเต็ก,เบอร์เกอร์)", img: "public/image/1.png", fallbackImg: "https://picsum.photos/seed/burger1/600/800", rating: "4.8", price: "฿฿", desc: "ร้านเบอร์เกอร์และสเต็กเนื้อฉ่ำๆ บรรยากาศเป็นกันเอง รสชาติจัดเต็มอร่อยคุ้มราคา", tags: ["เบอร์เกอร์", "สเต็ก"], time: "11:00 - 22:00 น.", videoUrl: "" },
+  { id: 2, title: "ร้าน ครัวสุโขทัย (ก๊วยเตี๋ยว+ตามสั่ง)", img: "public/image/2.png", fallbackImg: "https://picsum.photos/seed/noodle2/600/800", rating: "4.5", price: "฿", desc: "ร้านเด็ดหน้าม. มีทั้งก๋วยเตี๋ยวต้มยำสุโขทัยรสแซ่บ และอาหารตามสั่งให้เลือกหลากหลาย", tags: ["ก๋วยเตี๋ยว", "ตามสั่ง"], time: "09:00 - 20:00 น.", videoUrl: "" },
   { id: 3, title: "Keaw Thod (ร้านเกี๊ยว หน้า ม.ศรีปทุม)", img: "/image/3.png", fallbackImg: "https://picsum.photos/seed/fried3/600/800", rating: "4.9", price: "฿", desc: "เกี๊ยวทอดกรอบๆ ไส้แน่นๆ ทอดร้อนๆ พร้อมน้ำจิ้มรสเด็ด ขวัญใจเด็กศรีปทุม", tags: ["เกี๊ยวทอด", "ของทานเล่น"], time: "15:00 - 23:00 น.", videoUrl: "" },
   { id: 4, title: "ชวง ชวงเวย (ร้านหม่าล่า ชั่งขีด)", img: "/image/4.png", fallbackImg: "https://picsum.photos/seed/mala4/600/800", rating: "4.7", price: "฿฿", desc: "หม่าล่าแบบชั่งขีด เลือกระดับความเผ็ดชาได้ตามใจชอบ วัตถุดิบสดใหม่ ซุปเข้มข้นถึงใจ", tags: ["หม่าล่า", "ปิ้งย่าง"], time: "16:00 - 24:00 น.", videoUrl: "" },
   { id: 5, title: "ก๋วยเตี๋ยวเรือนายเกรียง", img: "/image/5.png", fallbackImg: "https://picsum.photos/seed/boatnoodle5/600/800", rating: "4.6", price: "฿", desc: "ก๋วยเตี๋ยวเรือน้ำตกเข้มข้น หมูนุ่ม ตับหวาน กากหมูเจียวกรอบๆ ชามเดียวไม่เคยพอ", tags: ["ก๋วยเตี๋ยวเรือ", "อาหารไทย"], time: "08:00 - 18:00 น.", videoUrl: "" },
@@ -314,55 +316,54 @@ const MainPage = ({
       {/* Content */}
       <main className="flex-1 max-w-6xl mx-auto w-full px-6 py-20 space-y-24">
         
-        {/* Goal */}
+        {/* Goal and Info Bento Section */}
         <motion.section 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="relative bg-white rounded-3xl p-10 md:p-16 shadow-sm border border-gray-100 text-center max-w-4xl mx-auto"
+          className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 max-w-5xl mx-auto flex flex-col lg:flex-row gap-12"
         >
-          <Quote className="absolute top-8 left-8 text-brand-green/10 w-20 h-20 -z-0" />
-          <div className="relative z-10">
-            <div className="inline-flex items-center justify-center p-3 bg-brand-green/10 rounded-2xl mb-6 text-brand-green">
-              <ChefHat className="w-8 h-8" />
+          {/* Left/Main content */}
+          <div className="flex-1 relative">
+            <Quote className="absolute -top-4 -left-4 text-brand-green/5 w-24 h-24 -z-0" />
+            <div className="relative z-10">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-green/10 text-brand-green font-semibold mb-6">
+                <ChefHat className="w-5 h-5" /> จุดประสงค์ของเรา
+              </div>
+              <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-gray-900 leading-tight">
+                บอกต่อความอร่อย <br/> ย่านบางบัว
+              </h2>
+              <p className="text-gray-600 leading-relaxed font-medium text-lg">
+                ปัจจุบันเด็กจบใหม่ที่มาเข้าเรียนใหม่ใน <span className="text-brand-green font-bold">มหาลัยศรีปทุม</span> ยังไม่รู้ว่ามีร้านอาหารที่อร่อย
+                และเด็ดแถวย่านบางบัว การนำเสนอเป็นวิดีโอผสมโมชั่นจะทำให้เด็กๆสนใจว่า
+                แถวย่านบางบัวมีร้านอาหารที่อร่อยและราคาไม่แพงจนเกินไป ทำให้นักเรียนนักศึกษาเข้าถึงได้ง่าย
+              </p>
             </div>
-            <h2 className="text-3xl font-bold mb-6 text-gray-900">จุดประสงค์ของเรา</h2>
-            <p className="text-gray-600 leading-relaxed font-medium text-lg md:text-xl">
-              ปัจจุบันเด็กจบใหม่ที่มาเข้าเรียนใหม่ใน <span className="text-brand-green font-bold">มหาลัยศรีปทุม</span> ยังไม่รู้ว่ามีร้านอาหารที่อร่อย
-              และเด็ดแถวย่านบางบัว การนำเสนอเป็นวิดีโอผสมโมชั่นจะทำให้เด็กๆสนใจว่า
-              แถวย่านบางบัวมีร้านอาหารที่อร่อยและราคาไม่แพงจนเกินไป ทำให้นักเรียนนักศึกษาเข้าถึงได้ง่าย
-            </p>
+          </div>
+          
+          {/* Right Content Cards */}
+          <div className="w-full lg:w-[45%] flex flex-col gap-6 justify-center">
+            <div className="bg-gray-50/80 rounded-3xl p-6 border border-gray-100 hover:border-gray-200 hover:shadow-sm transition-all flex items-start gap-5 group">
+              <div className="bg-brand-yellow/20 p-4 rounded-2xl shrink-0 group-hover:scale-110 transition-transform">
+                <Video className="w-7 h-7 text-yellow-600" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-gray-900 mb-1">สิ่งที่จะมีในคลิป</h3>
+                <p className="text-gray-500 font-medium text-sm leading-relaxed">รีวิวบรรยากาศ เมนูเด็ด และราคา</p>
+              </div>
+            </div>
+            
+            <div className="bg-gray-50/80 rounded-3xl p-6 border border-gray-100 hover:border-gray-200 hover:shadow-sm transition-all flex items-start gap-5 group">
+              <div className="bg-brand-green/10 p-4 rounded-2xl shrink-0 group-hover:scale-110 transition-transform">
+                <MonitorPlay className="w-7 h-7 text-brand-green" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-gray-900 mb-1">สื่อที่จะใช้</h3>
+                <p className="text-gray-500 font-medium text-sm leading-relaxed">วิดีโอสั้น TikTok, Reels, Shorts</p>
+              </div>
+            </div>
           </div>
         </motion.section>
-
-        {/* Cards */}
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="bg-white rounded-3xl p-10 flex flex-col items-center justify-center text-center shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:-translate-y-1 transition-all duration-300 border border-gray-100 group"
-          >
-            <div className="w-20 h-20 bg-brand-yellow/20 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-              <Video className="w-10 h-10 text-yellow-600" />
-            </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">สิ่งที่จะมีในคลิป</h3>
-            <p className="text-gray-500 font-medium">รีวิวบรรยากาศ เมนูเด็ด และราคา</p>
-          </motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="bg-white rounded-3xl p-10 flex flex-col items-center justify-center text-center shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:-translate-y-1 transition-all duration-300 border border-gray-100 group"
-          >
-            <div className="w-20 h-20 bg-brand-green/10 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-              <MonitorPlay className="w-10 h-10 text-brand-green" />
-            </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">สื่อที่จะใช้</h3>
-            <p className="text-gray-500 font-medium">วิดีโอสั้น TikTok, Reels, Shorts</p>
-          </motion.div>
-        </section>
 
         {/* Restaurants */}
         <section id="restaurants-section" className="scroll-mt-24">
