@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'motion/react';
 // 💡 คำแนะนำสำหรับการเปลี่ยนโลโก้:
 // 1. นำไฟล์รูปโลโก้ของคุณไปใส่ไว้ในโฟลเดอร์ public/image/
 // 2. เปลี่ยนชื่อไฟล์ในบรรทัดด้านล่างให้ตรงกับชื่อไฟล์ของคุณ (เช่น "/image/LOGO.png")
-const LOGO_URL = "image/LOGO.png"; // <-- ใส่ path รูปตรงนี้
+const LOGO_URL = "/image/LOGO.png"; // <-- ใส่ path รูปตรงนี้
 const NAV_LOGO_URL = LOGO_URL;
 
 // Component สำหรับโหลดรูปภาพ ถ้าไม่มีรูปในโฟลเดอร์ให้ใช้รูปสำรอง (Fallback)
@@ -37,14 +37,14 @@ const ImageWithFallback = ({ src, fallbackSrc, alt, className, ...props }: any) 
 const INITIAL_RESTAURANTS = [
   { id: 1, title: "ร้าน Bad bad burger (ร้านสเต็ก,เบอร์เกอร์)", img: "/image/1.png", fallbackImg: "https://picsum.photos/seed/burger1/600/800", rating: "4.8", price: "฿฿", desc: "ร้านเบอร์เกอร์และสเต็กเนื้อฉ่ำๆ บรรยากาศเป็นกันเอง รสชาติจัดเต็มอร่อยคุ้มราคา", tags: ["เบอร์เกอร์", "สเต็ก"], time: "11:00 - 22:00 น.", videoUrl: "" },
   { id: 2, title: "ร้าน ครัวสุโขทัย (ก๊วยเตี๋ยว+ตามสั่ง)", img: "/image/2.png", fallbackImg: "https://picsum.photos/seed/noodle2/600/800", rating: "4.5", price: "฿", desc: "ร้านเด็ดหน้าม. มีทั้งก๋วยเตี๋ยวต้มยำสุโขทัยรสแซ่บ และอาหารตามสั่งให้เลือกหลากหลาย", tags: ["ก๋วยเตี๋ยว", "ตามสั่ง"], time: "09:00 - 20:00 น.", videoUrl: "" },
-  { id: 3, title: "Keaw Thod (ร้านเกี๊ยว หน้า ม.ศรีปทุม)", img: "/image/3.png", fallbackImg: "https://picsum.photos/seed/fried3/600/800", rating: "4.9", price: "฿", desc: "เกี๊ยวทอดกรอบๆ ไส้แน่นๆ ทอดร้อนๆ พร้อมน้ำจิ้มรสเด็ด ขวัญใจเด็กศรีปทุม", tags: ["เกี๊ยวทอด", "ของทานเล่น"], time: "15:00 - 23:00 น.", videoUrl: "" },
+  { id: 3, title: "Keaw Thod (ร้านเกี๊ยว หน้า ม.ศรีปทุม)", img: "/image/3.png", fallbackImg: "https://picsum.photos/seed/fried3/600/800", rating: "4.9", price: "฿", desc: "เกี๊ยวทอดกรอบๆ ไส้แน่นๆ ทอดร้อนๆ พร้อมน้ำจิ้มรสเด็ด ขวัญใจเด็กศรีปทุม", tags: ["เกี๊ยวทอด", "ของทานเล่น"], time: "15:00 - 23:00 น.", videoUrl: "https://youtube.com/shorts/EM_-y7QR8e0" },
   { id: 4, title: "ชวง ชวงเวย (ร้านหม่าล่า ชั่งขีด)", img: "/image/4.png", fallbackImg: "https://picsum.photos/seed/mala4/600/800", rating: "4.7", price: "฿฿", desc: "หม่าล่าแบบชั่งขีด เลือกระดับความเผ็ดชาได้ตามใจชอบ วัตถุดิบสดใหม่ ซุปเข้มข้นถึงใจ", tags: ["หม่าล่า", "ปิ้งย่าง"], time: "16:00 - 24:00 น.", videoUrl: "" },
-  { id: 5, title: "ก๋วยเตี๋ยวเรือนายเกรียง", img: "/image/5.png", fallbackImg: "https://picsum.photos/seed/boatnoodle5/600/800", rating: "4.6", price: "฿", desc: "ก๋วยเตี๋ยวเรือน้ำตกเข้มข้น หมูนุ่ม ตับหวาน กากหมูเจียวกรอบๆ ชามเดียวไม่เคยพอ", tags: ["ก๋วยเตี๋ยวเรือ", "อาหารไทย"], time: "08:00 - 18:00 น.", videoUrl: "" },
-  { id: 6, title: "Wallace", img: "/image/6.png", fallbackImg: "https://picsum.photos/seed/wallace6/600/800", rating: "4.8", price: "฿฿", desc: "ร้านคาเฟ่และอาหารฟิวชั่น บรรยากาศดี ถ่ายรูปสวย เหมาะกับมานั่งพักผ่อนสังสรรค์", tags: ["คาเฟ่", "ฟิวชั่น"], time: "10:00 - 21:00 น.", videoUrl: "" },
+  { id: 5, title: "ก๋วยเตี๋ยวเรือนายเกรียง", img: "/image/5.png", fallbackImg: "https://picsum.photos/seed/boatnoodle5/600/800", rating: "4.6", price: "฿", desc: "ก๋วยเตี๋ยวเรือน้ำตกเข้มข้น หมูนุ่ม ตับหวาน กากหมูเจียวกรอบๆ ชามเดียวไม่เคยพอ", tags: ["ก๋วยเตี๋ยวเรือ", "อาหารไทย"], time: "08:00 - 18:00 น.", videoUrl: "https://youtube.com/shorts/oYnrLU7k15M" },
+  { id: 6, title: "Wallace", img: "/image/6.png", fallbackImg: "https://picsum.photos/seed/wallace6/600/800", rating: "4.8", price: "฿฿", desc: "ร้านคาเฟ่และอาหารฟิวชั่น บรรยากาศดี ถ่ายรูปสวย เหมาะกับมานั่งพักผ่อนสังสรรค์", tags: ["คาเฟ่", "ฟิวชั่น"], time: "10:00 - 21:00 น.", videoUrl: "https://youtube.com/shorts/GeJAwdUSojc" },
   { id: 7, title: "ครัวเจ๊ป๊อก", img: "/image/7.png", fallbackImg: "https://picsum.photos/seed/pok7/600/800", rating: "4.9", price: "฿", desc: "อาหารตามสั่งรสจัดจ้าน ให้เยอะ คุ้มค่า จานด่วนอิ่มอร่อย เมนูกะเพราคือที่สุด", tags: ["ตามสั่ง", "จานด่วน"], time: "10:00 - 20:00 น.", videoUrl: "" },
   { id: 8, title: "ร้านข้าวกะเตี๋ยว", img: "/image/8.png", fallbackImg: "https://picsum.photos/seed/rice8/600/800", rating: "4.5", price: "฿", desc: "รวบตึงทั้งเมนูข้าวและก๋วยเตี๋ยวในร้านเดียว อร่อยครบจบทุกความหิว", tags: ["ข้าว", "ก๋วยเตี๋ยว"], time: "09:00 - 20:00 น.", videoUrl: "" },
   { id: 9, title: "ก๋วยเตี๋ยวเรือ ป.ประทีป", img: "/image/9.png", fallbackImg: "https://picsum.photos/seed/shabu9/600/800", rating: "4.7", price: "฿฿฿", desc: "ชาบูน้ำซุปเข้มข้น เนื้อสไลด์พรีเมียม หมูคุโรบูตะ พร้อมน้ำจิ้มพอนสึและสุกี้ มีทั้งแบบ A La Carte และ Buffet", tags: ["ชาบู", "หม้อไฟ"], time: "11:00 - 22:00 น.", videoUrl: "" },
-  { id: 10, title: "ร้าน ทอด อบ ย่าง", img: "/image/10.png", fallbackImg: "https://picsum.photos/seed/roti10/600/800", rating: "4.6", price: "฿", desc: "ร้านข้าวหมูทอดที่ไม่ได้มีแค่หมูทอด มีทั้งปลามีทั้งไก่ทอดให้เลือดตามที่ต้องการเลย", tags: ["ของหวาน", "เครื่องดื่ม"], time: "17:00 - 23:30 น.", videoUrl: "" },
+  { id: 10, title: "ร้าน ทอด อบ ย่าง", img: "/image/10.png", fallbackImg: "https://picsum.photos/seed/roti10/600/800", rating: "4.6", price: "฿", desc: "ร้านข้าวหมูทอดที่ไม่ได้มีแค่หมูทอด มีทั้งปลามีทั้งไก่ทอดให้เลือดตามที่ต้องการเลย", tags: ["ของหวาน", "เครื่องดื่ม"], time: "17:00 - 23:30 น.", videoUrl: "https://youtube.com/shorts/Q9b-e2bMQRU" },
 ];
 
 // Helper function สำหรับแปลง URL วิดีโอ YouTube ให้เป็น Embed URL
