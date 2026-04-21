@@ -44,7 +44,7 @@ const INITIAL_RESTAURANTS = [
   { id: 7, title: "ครัวเจ๊ป๊อก", img: "/image/7.png", fallbackImg: "https://picsum.photos/seed/pok7/600/800", rating: "4.9", price: "฿", desc: "อาหารตามสั่งรสจัดจ้าน ให้เยอะ คุ้มค่า จานด่วนอิ่มอร่อย เมนูกะเพราคือที่สุด", tags: ["ตามสั่ง", "จานด่วน"], time: "10:00 - 20:00 น.", videoUrl: "" },
   { id: 8, title: "ร้านข้าวกะเตี๋ยว", img: "/image/8.png", fallbackImg: "https://picsum.photos/seed/rice8/600/800", rating: "4.5", price: "฿", desc: "รวบตึงทั้งเมนูข้าวและก๋วยเตี๋ยวในร้านเดียว อร่อยครบจบทุกความหิว", tags: ["ข้าว", "ก๋วยเตี๋ยว"], time: "09:00 - 20:00 น.", videoUrl: "" },
   { id: 9, title: "ก๋วยเตี๋ยวเรือ ป.ประทีป", img: "/image/9.png", fallbackImg: "https://picsum.photos/seed/shabu9/600/800", rating: "4.7", price: "฿฿฿", desc: "ชาบูน้ำซุปเข้มข้น เนื้อสไลด์พรีเมียม หมูคุโรบูตะ พร้อมน้ำจิ้มพอนสึและสุกี้ มีทั้งแบบ A La Carte และ Buffet", tags: ["ชาบู", "หม้อไฟ"], time: "11:00 - 22:00 น.", videoUrl: "" },
-  { id: 10, title: "ร้าน ทอด อบ ย่าง", img: "/image/10.png", fallbackImg: "https://picsum.photos/seed/roti10/600/800", rating: "4.6", price: "฿", desc: "โรตีกรอบนอกนุ่มใน ราดนมข้นหวานฉ่ำๆ ทานคู่กับชาชักรสเข้มข้น หอมกลิ่นชา เมนูแนะนำ: โรตีทิชชู่และชาชักเย็น", tags: ["ของหวาน", "เครื่องดื่ม"], time: "17:00 - 23:30 น.", videoUrl: "" },
+  { id: 10, title: "ร้าน ทอด อบ ย่าง", img: "/image/10.png", fallbackImg: "https://picsum.photos/seed/roti10/600/800", rating: "4.6", price: "฿", desc: "ร้านข้าวหมูทอดที่ไม่ได้มีแค่หมูทอด มีทั้งปลามีทั้งไก่ทอดให้เลือดตามที่ต้องการเลย", tags: ["ของหวาน", "เครื่องดื่ม"], time: "17:00 - 23:30 น.", videoUrl: "" },
 ];
 
 // Helper function สำหรับแปลง URL วิดีโอ YouTube ให้เป็น Embed URL
