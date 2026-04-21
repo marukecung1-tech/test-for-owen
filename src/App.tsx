@@ -222,17 +222,14 @@ const RestaurantDetail = ({ restaurant, onBack }: { restaurant: typeof INITIAL_R
           </div>
 
           {restaurant.videoUrl ? (
-            <div className="mt-10 rounded-2xl overflow-hidden shadow-lg aspect-video w-full bg-black">
-              <iframe 
-                width="100%" 
-                height="100%" 
-                src={getEmbedUrl(restaurant.videoUrl)} 
-                title="Video Review" 
-                frameBorder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowFullScreen
-              ></iframe>
-            </div>
+            <a 
+              href={restaurant.videoUrl} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="w-full mt-10 bg-red-600 hover:bg-red-700 text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-3 text-lg transition-colors shadow-lg shadow-red-600/30 active:scale-[0.98]"
+            >
+              <PlayCircle className="w-6 h-6" /> ดูรีวิวบน YouTube
+            </a>
           ) : (
             <button className="w-full mt-10 bg-gray-100 text-gray-400 font-bold py-4 rounded-2xl cursor-not-allowed flex items-center justify-center gap-2 text-lg">
               <Video className="w-5 h-5" /> ยังไม่มีวิดีโอรีวิว
